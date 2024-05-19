@@ -83,12 +83,12 @@ export function sortbylived() {
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
-	inventors.sort((a,b)=>{
-        return a.last-b.last;
-    })
-
-    return inventors;
-}
+	const alpha = people.sort((lastOne, nextOne) => { 
+		const [aLast, aFirst] = lastOne.split(', '); 
+		const [bLast, bFirst] = nextOne.split(', '); 
+		return aLast > bLast ? 1 : -1; });
+	}
+	return alpha;
 
 // 7. Reduce Exercise
 // Sum up the instances of each of these
