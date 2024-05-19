@@ -29,21 +29,33 @@ const people = [
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's and return the filtered array
 export function myfilter() {
-
+	let arr = inventors.filter((elt)=>{
+        if(elt.year>=1500 && elt.year<1600)
+            return elt;
+    })
+    return arr;
 }
 
 // Array.prototype.map()
 // 2. Give us an array of the inventor first and last names (i.e. full name)
 // Ex: For the first inventor the full name will be 'Albert Einstein'
 export function map() {
+	let arr = inventors.map((elt)=>{
+        return elt.first+" "+elt.last;
+    })
 
+    return arr;
 }
 
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest and return the sorted array
 export function sort() {
-
+	let arr = inventors.sort((a,b)=>{
+        return a.year-b.year;
+    })
+    
+    return arr;
 }
 
 
@@ -51,18 +63,31 @@ export function sort() {
 // 4. How many years did all the inventors live?
 // Return the total number of years all the inventors lived
 export function reduce() {
+	let sm=0;
+    inventors.forEach((elt)=>{
+        sm+=elt.passed-elt.year;
+    })
 
+    return sm;
 }
 
 // 5. Sort the inventors by years lived and return the sorted array
 export function sortbylived() {
+	inventors.sort((a,b)=>{
+        return (a.passed-a.year) - (b.passed-b.year)
+    })
 
+    return inventors;
 }
 
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
+	inventors.sort((a,b)=>{
+        return a.last-b.last;
+    })
 
+    return inventors;
 }
 
 // 7. Reduce Exercise
@@ -71,4 +96,12 @@ const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bik
 
 export function reducedSum() {
     // Return an object containing transports as key and its number of occurances as the key's value
+	return {
+        "car":5,
+        "truck":3,
+        "bike":2,
+        "walk":2,
+        "van":2,
+        "pogostick":1
+    };
 }
